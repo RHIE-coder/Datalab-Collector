@@ -72,4 +72,64 @@ request.post({
     });
 ```
 
+### * 문제 발생
+
+![](./mdsrc/2.png)
+
 <br><br><br><br><br>
+
+## 03. 크롤링 적용 연구
+
+제일 중요한 인기검색어 API를 제공하지 않다니, 아주 난감한 상황이다. 어쩔 수 없이 크롤링을 적용해야 한다.
+
+우선 현재 속도를 중요하게 생각하여 내게 익숙한 Python을 이용하고 그것을 JavaScript로 부를 것이다.
+
+
+### * 분석
+
+우선 비동기적으로 이루어지는 인기검색어 Page 전환 요청 과정을 파악해야한다.
+
+ - Request URL : ` https://datalab.naver.com/shoppingInsight/getCategoryKeywordRank.naver`
+
+ - HTTP Method : `POST`
+
+ - Form Data : 
+   - `cid=50000000`
+   - `timeUnit=date`
+   - `startDate=2021-05-01`
+   - `endDate=2021-06-01`
+   - `age`
+   - `gender`
+   - `device`
+   - `page=5`
+   - `count=20`
+
+`requests` 모듈은 정적인 페이지의 정보들을 가져올 수 있지만 동적인 페이지의 정보들은 가져올 수 없다. 버튼을 누를 때 동작하는 자바스크립트의 원인인 듯하다. 또한, 원래 사용하던 `beautifulSoup` 모듈을 사용한 결과 비동기적으로 데이터를 가져오기에는 많은 제약이 있었다. 그러므로 `selenium` 모듈을 사용해야한다. `selenium`의 경우 브라우저를 연동하고 자바스크립트를 동작하는 과정까지 포함한다.
+
+### * TODO
+
+ - [ ] selenium 사용법을 익힌다
+ - [ ] 각 카테고리별 cid를 파악해야 한다.
+
+### * selenium
+
+selenium 모듈 가져오기
+
+```sh
+pip install selenium
+```
+
+<br><br>
+
+브라우저 엔진 가져오기
+
+https://sites.google.com/a/chromium.org/chromedriver/downloads
+
+<br><br>
+
+
+
+<br><br><br><br><br>
+
+## 04. 
+
